@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    public int healthPoint;
+
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -16,5 +18,10 @@ public class EnemyMove : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.position += transform.forward * 1f * Time.deltaTime;
+
+        if(healthPoint <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
