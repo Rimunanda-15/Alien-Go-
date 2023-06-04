@@ -47,19 +47,4 @@ public class GameManagerX : MonoBehaviour
     {
         autoShootOn = false;
     }
-
-    public void Red()
-    {
-        cube.GetComponent<Renderer>().material.color = Color.red;
-    }
-    
-    public void Blue()
-    {
-        cube.GetComponent<Renderer>().material.color = Color.blue;
-    }
-
-    public void Black()
-    {
-        cube.GetComponent<Renderer>().material.color = Color.black;
-    }
 }
