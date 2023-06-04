@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private GvrBasePointer gvrPointer;
     private Vector3 raycastPosition;
     private GameManagerX gameManagerX;
-    private float bulletSpeed = 80f;
+    private float bulletSpeed = 50f;
     public GameObject explosionFx;
     private bool exploded = false;
     private GameObject instantiatedFx;
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -50)
+        if(transform.position.z > 80)
         {
             Destroy(gameObject);
         }
@@ -50,15 +50,16 @@ public class Bullet : MonoBehaviour
     {
         if (!exploded)
         {
-            StartCoroutine(ExplodeCoroutine());
             exploded = true;
+            StartCoroutine(ExplodeCoroutine());
         }
     }
 
     IEnumerator ExplodeCoroutine()
     {
         instantiatedFx = Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
-        yield return new WaitForSeconds(0.3f); // Wait for 3 seconds
+        yield return new WaitForSeconds(0.3f);
         Destroy(instantiatedFx);
+        Destroy(gameObject);
     }
 }
