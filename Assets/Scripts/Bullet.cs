@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private GvrBasePointer gvrPointer;
     private Vector3 raycastPosition;
     private GameManagerX gameManagerX;
-    private float bulletSpeed = 80f;
+    private float bulletSpeed = 100f;
     public GameObject explosionFx;
     private bool exploded = false;
     private GameObject instantiatedFx;
@@ -49,15 +49,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!exploded)
-        {
-            exploded = true;
-            StartCoroutine(ExplodeCoroutine());
-        }
-
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<EnemyMove>().healthPoint -= damage;
+            if (!exploded)
+            {
+                exploded = true;
+                StartCoroutine(ExplodeCoroutine());
+            }
         }
     }
 
