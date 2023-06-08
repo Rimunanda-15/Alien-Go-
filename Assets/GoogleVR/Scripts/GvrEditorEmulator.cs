@@ -162,7 +162,7 @@ public class GvrEditorEmulator : MonoBehaviour
             Camera cam = allCameras[i];
 
             // Only check camera if it is an enabled VR Camera.
-            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None)
+            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None && (cam.tag != "Minimap Camera"))
             {
                 if (cam.nearClipPlane > 0.1
                     && GvrSettings.ViewerPlatform == GvrSettings.ViewerPlatformType.Daydream)
@@ -229,7 +229,7 @@ public class GvrEditorEmulator : MonoBehaviour
             Camera cam = allCameras[i];
 
             // Check if the Camera is a valid VR Camera, and if so update it to track head motion.
-            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None)
+            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None && (cam.tag != "Minimap Camera"))
             {
                 cam.transform.localPosition = HeadPosition * cam.transform.lossyScale.y;
                 cam.transform.localRotation = HeadRotation;

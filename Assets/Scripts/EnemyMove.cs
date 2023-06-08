@@ -5,8 +5,12 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public int healthPoint;
-
+    public int damage;
+    private bool exploded = false;
     private GameObject player;
+    public GameObject explosionFx;
+    private GameObject instantiatedFx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +27,26 @@ public class EnemyMove : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (!exploded)
+            {
+                exploded = true;
+                StartCoroutine(ExplodeCoroutine());
+            }
+            other.GetComponent<Player>().decreaseHp(damage);
+        }
+    }
+
+    IEnumerator ExplodeCoroutine()
+    {
+        instantiatedFx = Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Destroy(instantiatedFx);
+        Destroy(gameObject);
     }
 }

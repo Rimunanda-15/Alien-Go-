@@ -482,7 +482,8 @@ GameObject:
   - component: {fileID: 1953586374180315220}
   - component: {fileID: 6119164020852818586}
   - component: {fileID: -5731010919077078798}
-  - component: {fileID: 3524499597943294385}
+  - component: {fileID: 3205529680770522921}
+  - component: {fileID: 9008989948416594852}
   m_Layer: 0
   m_Name: Enemy Alien
   m_TagString: Enemy
@@ -539,7 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84c8bbad1eb65849abb93620548d440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 0
+  healthPoint: 8
+  damage: 4
+  explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
 --- !u!54 &1953586374180315221
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -566,7 +570,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.3, z: 0}
@@ -582,7 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84c8bbad1eb65849abb93620548d440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 8
+  healthPoint: 6
+  damage: 4
+  explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
 --- !u!114 &-5731010919077078798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +607,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3524499597943294385}
+        - m_Target: {fileID: 3205529680770522921}
           m_MethodName: TurnOnAutoShoot
           m_Mode: 1
           m_Arguments:
@@ -615,7 +622,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3524499597943294385}
+        - m_Target: {fileID: 3205529680770522921}
           m_MethodName: TurnOffAutoShoot
           m_Mode: 1
           m_Arguments:
@@ -626,7 +633,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &3524499597943294385
+--- !u!114 &3205529680770522921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -635,10 +642,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953586373612277429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c466265e5d528940a87818e65d56ab2, type: 3}
+  m_Script: {fileID: 11500000, guid: 11d0c75af31524e48b8dee0cd863e0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7913895529961007898, guid: a374b590a1af84a4482915cd419bb466, type: 3}
+--- !u!114 &9008989948416594852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953586373612277429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35fd54ac079a8b47aa6549789157333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 4922837886278913688, guid: 64491c38b1af452409456a53259a0f43,
+    type: 3}
+  clampOnRadar: 1
 --- !u!1 &1953586373612277505
 GameObject:
   m_ObjectHideFlags: 0

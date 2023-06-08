@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5429697033820245902}
   - component: {fileID: 5429697033820245897}
   - component: {fileID: 3399249423648557249}
-  - component: {fileID: 5422857242593955753}
+  - component: {fileID: 3162844813419620623}
+  - component: {fileID: 3838813336825117397}
   m_Layer: 0
   m_Name: Enemy Big Virus
   m_TagString: Enemy
@@ -103,7 +104,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5422857242593955753}
+        - m_Target: {fileID: 3162844813419620623}
           m_MethodName: TurnOnAutoShoot
           m_Mode: 1
           m_Arguments:
@@ -118,7 +119,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5422857242593955753}
+        - m_Target: {fileID: 3162844813419620623}
           m_MethodName: TurnOffAutoShoot
           m_Mode: 1
           m_Arguments:
@@ -142,7 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 4
---- !u!114 &5422857242593955753
+  damage: 2
+  explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
+--- !u!114 &3162844813419620623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +155,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3220837972458257825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c466265e5d528940a87818e65d56ab2, type: 3}
+  m_Script: {fileID: 11500000, guid: 11d0c75af31524e48b8dee0cd863e0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7913895529961007898, guid: a374b590a1af84a4482915cd419bb466, type: 3}
+--- !u!114 &3838813336825117397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220837972458257825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35fd54ac079a8b47aa6549789157333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 4922837886278913688, guid: 64491c38b1af452409456a53259a0f43,
+    type: 3}
+  clampOnRadar: 1
 --- !u!1 &3220837972458257827
 GameObject:
   m_ObjectHideFlags: 0
