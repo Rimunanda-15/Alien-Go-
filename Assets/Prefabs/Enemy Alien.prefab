@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 6119164020852818586}
   - component: {fileID: -5731010919077078798}
   - component: {fileID: 3205529680770522921}
+  - component: {fileID: 9008989948416594852}
   m_Layer: 0
   m_Name: Enemy Alien
   m_TagString: Enemy
@@ -541,7 +542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 8
   damage: 4
-  explosionFx: {fileID: 0}
+  explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
 --- !u!54 &1953586374180315221
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -584,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84c8bbad1eb65849abb93620548d440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 8
+  healthPoint: 6
   damage: 4
   explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
     type: 3}
@@ -644,6 +646,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7913895529961007898, guid: a374b590a1af84a4482915cd419bb466, type: 3}
+--- !u!114 &9008989948416594852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953586373612277429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35fd54ac079a8b47aa6549789157333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 4922837886278913688, guid: 64491c38b1af452409456a53259a0f43,
+    type: 3}
+  clampOnRadar: 1
 --- !u!1 &1953586373612277505
 GameObject:
   m_ObjectHideFlags: 0

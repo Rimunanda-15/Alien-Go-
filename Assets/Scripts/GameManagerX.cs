@@ -22,6 +22,9 @@ public class GameManagerX : MonoBehaviour
     public GameObject aboutPanel;
     public GameObject exitPanel;
     public GameObject gameOverPanel;
+    public GameObject mainCanvas;
+    public GameObject overlayCanvas;
+    public GameObject radar;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,11 @@ public class GameManagerX : MonoBehaviour
         aboutPanel.SetActive(false);
         exitPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+
+        // change canvas to overlay
+        mainCanvas.SetActive(false);
+        overlayCanvas.SetActive(true);
+        radar.SetActive(true);
     }
 
     public void RestartGame()
@@ -67,6 +75,11 @@ public class GameManagerX : MonoBehaviour
         aboutPanel.SetActive(false);
         exitPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+
+        // change canvas to main
+        mainCanvas.SetActive(true);
+        overlayCanvas.SetActive(false);
+        radar.SetActive(false);
     }
 
     public void DisplayMainMenu()
@@ -76,6 +89,11 @@ public class GameManagerX : MonoBehaviour
         aboutPanel.SetActive(false);
         exitPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+
+        // set canvas to main
+        mainCanvas.SetActive(true);
+        overlayCanvas.SetActive(false);
+        radar.SetActive(false);
     }
 
     IEnumerator SpawnEnemy()
