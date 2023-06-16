@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ilumisoft.RadarSystem;
 
 public class GameManagerX : MonoBehaviour
 {
@@ -60,14 +61,18 @@ public class GameManagerX : MonoBehaviour
 
     public void RestartGame()
     {
-        DestroyAllEnemies();
         PlayGame();
     }
 
     public void GameOver()
     {
         isGameActive = false;
+        StartCoroutine(DestroyAllEnemies());
         Debug.Log("Game is non-active");
+
+        // change canvas to main
+        mainCanvas.SetActive(true);
+        overlayCanvas.SetActive(false);
 
         // set game over panel to true
         mainMenuPanel.SetActive(false);
@@ -75,25 +80,20 @@ public class GameManagerX : MonoBehaviour
         aboutPanel.SetActive(false);
         exitPanel.SetActive(false);
         gameOverPanel.SetActive(true);
-
-        // change canvas to main
-        mainCanvas.SetActive(true);
-        overlayCanvas.SetActive(false);
-        radar.SetActive(false);
     }
 
     public void DisplayMainMenu()
     {
+        // set canvas to main
+        mainCanvas.SetActive(true);
+        overlayCanvas.SetActive(false);
+        radar.SetActive(false);
+
         mainMenuPanel.SetActive(true);
         creditPanel.SetActive(false);
         aboutPanel.SetActive(false);
         exitPanel.SetActive(false);
         gameOverPanel.SetActive(false);
-
-        // set canvas to main
-        mainCanvas.SetActive(true);
-        overlayCanvas.SetActive(false);
-        radar.SetActive(false);
     }
 
     IEnumerator SpawnEnemy()
@@ -101,7 +101,7 @@ public class GameManagerX : MonoBehaviour
         while (true)
         {
             SpawnEnemyHelper();
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(5);
         }
     }
 
@@ -119,13 +119,21 @@ public class GameManagerX : MonoBehaviour
         }
     }
 
-    void DestroyAllEnemies()
+    IEnumerator DestroyAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
+        yield return new WaitForSeconds(1f);
+
         foreach (GameObject enemy in enemies)
         {
-            Destroy(enemy);
+            if(enemy != null)
+            {
+                enemy.GetComponent<Locatable>().ClampOnRadar = false;
+                Destroy(enemy);
+            }
         }
+
+        radar.SetActive(false);
     }
 }

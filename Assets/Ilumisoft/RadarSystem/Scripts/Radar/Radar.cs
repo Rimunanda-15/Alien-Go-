@@ -44,12 +44,16 @@ namespace Ilumisoft.RadarSystem
         {
             LocatableManager.OnLocatableAdded += OnLocatableAdded;
             LocatableManager.OnLocatableRemoved += OnLocatableRemoved;
+
+            Debug.Log("Radar was enabled");
         }
 
         private void OnDisable()
         {
             LocatableManager.OnLocatableAdded -= OnLocatableAdded;
             LocatableManager.OnLocatableRemoved -= OnLocatableRemoved;
+
+            Debug.Log("Radar was disabled");
         }
 
         /// <summary>

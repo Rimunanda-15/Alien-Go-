@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Ilumisoft.RadarSystem;
 public class EnemyMove : MonoBehaviour
 {
     public int healthPoint;
     public int damage;
-    private bool exploded = false;
     private GameObject player;
-    public GameObject explosionFx;
-    private GameObject instantiatedFx;
+    public bool isAsteroid;
+    public GameObject explosionParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -29,24 +28,26 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!exploded)
-            {
-                exploded = true;
-                StartCoroutine(ExplodeCoroutine());
-            }
+            StartCoroutine(DestroyEnemyCoroutine());
             other.GetComponent<Player>().decreaseHp(damage);
         }
     }
 
-    IEnumerator ExplodeCoroutine()
+    IEnumerator DestroyEnemyCoroutine()
     {
-        instantiatedFx = Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
-        yield return new WaitForSeconds(0.3f);
-        Destroy(instantiatedFx);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        GetComponent<Locatable>().ClampOnRadar = false;
         Destroy(gameObject);
+
+        yield return true;
     }
 }

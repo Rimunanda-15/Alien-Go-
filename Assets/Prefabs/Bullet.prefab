@@ -89,7 +89,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913895529961007898}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7509f6c6d640a774f9dfaa8af8658a80, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455743b530bda2e46aa02e899c27cda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFx: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+  bulletExplosion: {fileID: 1000010823978654, guid: ba47f9c5df5f0e84292fd3a1aae54659,
     type: 3}

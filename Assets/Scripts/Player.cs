@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthPoint = 0;
+        healthPoint = 25;
         gameManager = GameObject.Find("Game Manager");
         hpText = hpTextObject.GetComponent<TMP_Text>();
     }
@@ -46,4 +46,5 @@ public class Player : MonoBehaviour
             hpText.text = "0";
         }
     }
+
 }
