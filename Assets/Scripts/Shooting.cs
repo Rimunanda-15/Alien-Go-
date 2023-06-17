@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
     private Transform mainCam;
     public GameObject bullet;
     private bool autoShootOn = false;
-    private float shootingRate = 0.2f;
+    private float shootingRate = 0.1f;
 
     // Start is called before the first frame update
     void Start()

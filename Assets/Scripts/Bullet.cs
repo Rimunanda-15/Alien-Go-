@@ -8,10 +8,8 @@ public class Bullet : MonoBehaviour
     private GvrBasePointer gvrPointer;
     private Vector3 raycastPosition;
     private GameManagerX gameManagerX;
-    private float bulletSpeed = 100f;
-    public GameObject explosionFx;
-    private bool exploded = false;
-    private GameObject instantiatedFx;
+    private float bulletSpeed = 150f;
+    public GameObject bulletExplosion;
     private int damage = 1;
 
     // Start is called before the first frame update
@@ -52,19 +50,15 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<EnemyMove>().healthPoint -= damage;
-            if (!exploded)
-            {
-                exploded = true;
-                StartCoroutine(ExplodeCoroutine());
-            }
+            StartCoroutine(ExplodeCoroutine());
         }
     }
 
     IEnumerator ExplodeCoroutine()
     {
-        instantiatedFx = Instantiate(explosionFx, transform.position, explosionFx.transform.rotation);
+        GameObject instantiatedBulletExplosion = Instantiate(bulletExplosion, transform.position, bulletExplosion.transform.rotation);
         yield return new WaitForSeconds(0.3f);
-        Destroy(instantiatedFx);
+        Destroy(instantiatedBulletExplosion);
         Destroy(gameObject);
     }
 }
