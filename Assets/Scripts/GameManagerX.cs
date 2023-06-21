@@ -11,6 +11,8 @@ public class GameManagerX : MonoBehaviour
 
     // enemy spawner variables
     public GameObject[] enemies;
+    private float regularEnemySpawnCooldown = 5f;
+    private float powerUpEnemySpawnCooldown = 30f;
     private int xPos1;
     private int xPos2;
     private int xPos3;
@@ -27,11 +29,17 @@ public class GameManagerX : MonoBehaviour
     public GameObject overlayCanvas;
     public GameObject radar;
 
+    // powerups
+    public GameObject keris;
+    public GameObject powerUpAsteroid;
+
     // Start is called before the first frame update
     void Start()
     {
+        isGameActive = false;
         DisplayMainMenu();
         StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemyWithPowerUp());
         score = 0; 
     }
 
@@ -101,11 +109,20 @@ public class GameManagerX : MonoBehaviour
         while (true)
         {
             SpawnEnemyHelper();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSecondsRealtime(regularEnemySpawnCooldown);
         }
     }
 
-    void SpawnEnemyHelper()
+    IEnumerator SpawnEnemyWithPowerUp()
+    {
+        while(true)
+        {
+            yield return new WaitForSecondsRealtime(powerUpEnemySpawnCooldown);
+            SpawnEnemyHelper(true);
+        }
+    }
+
+    void SpawnEnemyHelper(bool withPowerUp = false)
     {
         if(isGameActive)
         {
@@ -114,8 +131,14 @@ public class GameManagerX : MonoBehaviour
             xPos3 = Random.Range(-10, 10);
             yPos = Random.Range(-5, 12);
             zPos = Random.Range(6, 15);
-            int enemyIndex = Random.Range(0, 3);
-            Instantiate (enemies[enemyIndex], new Vector3(xPos1, yPos, zPos), Quaternion.identity);
+            if(!withPowerUp)
+            {
+                int enemyIndex = Random.Range(0, 3);
+                Instantiate(enemies[enemyIndex], new Vector3(xPos1, yPos, zPos), Quaternion.identity);
+            } else
+            {
+                Instantiate(powerUpAsteroid, new Vector3(xPos1, yPos, zPos), Quaternion.identity);
+            }
         }
     }
 

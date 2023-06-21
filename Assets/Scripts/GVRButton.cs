@@ -11,10 +11,12 @@ public class GVRButton : MonoBehaviour
     private float totalTime;
     private bool gvrStatus;
     private float gvrTimer;
+    public AudioSource clickSfx;
 
     // Start is called before the first frame update
     void Start()
     {
+        clickSfx = GameObject.Find("GvrEditorEmulator").GetComponent<AudioSource>();
         totalTime = 3f;
         gvrStatus = false;
         gvrTimer = 0f;
@@ -31,6 +33,7 @@ public class GVRButton : MonoBehaviour
 
         if(gvrTimer > totalTime)
         {
+            clickSfx.Play();
             imgCircle.fillAmount = 0f;
             gvrTimer = 0f;
             gvrStatus = false;

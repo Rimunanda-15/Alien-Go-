@@ -8,14 +8,18 @@ public class Bullet : MonoBehaviour
     private GvrBasePointer gvrPointer;
     private Vector3 raycastPosition;
     private GameManagerX gameManagerX;
-    private float bulletSpeed = 150f;
+    private float bulletSpeed = 200f;
     public GameObject bulletExplosion;
     private int damage = 1;
+    private GameObject player;
+    private AudioSource bulletExplosionSfx;
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletExplosionSfx = GameObject.Find("EnemyDiedSfx").GetComponent<AudioSource>();
         gameManagerX = GameObject.Find("Game Manager").GetComponent<GameManagerX>();
+        player = GameObject.Find("Player");
         // Get a reference to the active GvrBasePointer
         gvrPointer = GvrPointerInputModule.Pointer;
 
@@ -43,12 +47,21 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(player.GetComponent<Player>().GetPowerUpStatus())
+        {
+            damage = 5;
+        } else
+        {
+            damage = 1;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
+            bulletExplosionSfx.Play();
             other.GetComponent<EnemyMove>().healthPoint -= damage;
             StartCoroutine(ExplodeCoroutine());
         }
