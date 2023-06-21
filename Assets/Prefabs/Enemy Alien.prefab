@@ -543,8 +543,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 8
   damage: 4
+  speed: 0.3
   isAsteroid: 0
+  isContainPowerUp: 0
   explosionParticle: {fileID: 6209240610636150205}
+  powerUp: {fileID: 0}
 --- !u!54 &1953586374180315221
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -589,9 +592,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 6
   damage: 4
+  speed: 0.5
   isAsteroid: 0
+  isContainPowerUp: 0
   explosionParticle: {fileID: 1000010823978654, guid: 0bb4d4a75bb46f946adb77989b73a57e,
     type: 3}
+  powerUp: {fileID: 0}
 --- !u!114 &-5731010919077078798
 MonoBehaviour:
   m_ObjectHideFlags: 0

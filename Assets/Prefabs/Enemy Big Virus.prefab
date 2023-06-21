@@ -145,9 +145,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 4
   damage: 2
+  speed: 2
   isAsteroid: 0
+  isContainPowerUp: 0
   explosionParticle: {fileID: 1000010823978654, guid: 0bb4d4a75bb46f946adb77989b73a57e,
     type: 3}
+  powerUp: {fileID: 0}
 --- !u!114 &3162844813419620623
 MonoBehaviour:
   m_ObjectHideFlags: 0
